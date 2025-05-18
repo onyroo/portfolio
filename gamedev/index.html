@@ -1,119 +1,139 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>محمد عباسی | گیم دیزاینر</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: 'Vazirmatn', sans-serif;
-      background-color: #1a1a1a;
+      background-color: #1e1e1e;
       color: #e0e0e0;
-      direction: rtl;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      justify-content: center;
     }
 
-    header {
-      background: linear-gradient(90deg, #6a11cb, #2575fc);
-      padding: 2rem;
-      text-align: center;
-      border-bottom: 4px solid #444;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    header p {
-      margin-top: 1rem;
-      font-size: 1.1rem;
-      line-height: 1.8;
+    .container {
       max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 1.5rem;
+      padding: 2rem;
       background-color: #2a2a2a;
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
 
-    section {
-      margin-bottom: 2.5rem;
+    h1 {
+      color: #8e44ad;
+      margin-bottom: 0.5rem;
     }
 
-    h2 {
-      color: #a78bfa;
-      font-size: 1.6rem;
-      border-bottom: 2px solid #444;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.2rem;
+    .subtitle {
+      color: #3498db;
+      margin-bottom: 1rem;
     }
 
-    ul {
-      padding-right: 1.5rem;
+    .section {
+      margin-top: 1.5rem;
     }
 
-    li {
-      margin-bottom: 0.7rem;
-      line-height: 1.6;
+    .lang-switch {
+      margin-bottom: 1rem;
+      text-align: center;
     }
 
-    ul ul {
-      margin-top: 0.5rem;
-      padding-right: 1rem;
+    button {
+      background-color: #8e44ad;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
 
-    strong {
-      color: #60a5fa;
+    button:hover {
+      background-color: #732d91;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>محمد عباسی، گیم دیزاینر</h1>
-    <p>طراح بازی با تمرکز بر خلق تجربه‌های تعاملی منحصربه‌فرد.<br>
-    سابقه‌ی فعالیت به‌صورت فریلنس و همکاری با تیم‌های خلاق در پروژه‌های تجاری و شخصی.<br>
-    مشتاق یادگیری مداوم، همکاری تیمی و ارائه راه‌حل‌های خلاقانه در مسیر توسعه بازی و رسانه‌های تعاملی.</p>
-  </header>
+  <div class="lang-switch">
+    <button onclick="toggleLanguage()">تغییر زبان / Switch Language</button>
+  </div>
 
-  <main>
-    <section>
-      <h2>اطلاعات تحصیلی</h2>
+  <div class="container" id="content-fa">
+    <h1>محمد عباسی</h1>
+    <p class="subtitle">گیم دیزاینر</p>
+    <p>
+      طراح بازی با تمرکز بر خلق تجربه‌های تعاملی منحصربه‌فرد. سابقه‌ی فعالیت به‌صورت
+      فریلنس و همکاری با تیم‌های خلاق در پروژه‌های تجاری و شخصی. مشتاق یادگیری
+      مداوم، همکاری تیمی و ارائه راه‌حل‌های خلاقانه در مسیر توسعه بازی و رسانه‌های تعاملی.
+    </p>
+
+    <div class="section">
+      <h3>اطلاعات تحصیلی:</h3>
       <ul>
-        <li>دیپلم - سال 1400، هنرستان فنی حرفه ای شهید حایری بروجن، رشته شبکه و نرم‌افزار رایانه</li>
-        <li>کاردانی - سال 1403، دانشکده فنی شهید مهاجر اصفهان، رشته نرم‌افزار</li>
-        <li>کارشناسی - در حال تحصیل، دانشکده فنی انقلاب اسلامی تهران، رشته انیمیشن دیجیتال</li>
+        <li>دیپلم - سال 1400: هنرستان فنی شهید حایری، بروجن (شبکه و نرم‌افزار)</li>
+        <li>کاردانی - 1403: دانشکده فنی شهید مهاجر، اصفهان (نرم‌افزار)</li>
+        <li>کارشناسی - در حال تحصیل: دانشکده فنی انقلاب اسلامی، تهران (انیمیشن دیجیتال)</li>
       </ul>
-    </section>
+    </div>
 
-    <section>
-      <h2>سوابق شغلی</h2>
+    <div class="section">
+      <h3>سوابق شغلی:</h3>
       <ul>
-        <li><strong>نردبان اندیشه</strong> - کار بر روی بازی شریف‌آباد:
+        <li>نردبان اندیشه - بازی شریف‌آباد:
           <ul>
-            <li>دیزاین سیزن پس</li>
-            <li>Maintenance</li>
-            <li>دیزاین مراحل Regetta</li>
-            <li>تست مینی‌گیم آمیرزا</li>
-            <li>Task Management</li>
-            <li>دیزاین مینی‌گیم نعمت موتوری</li>
+            <li>طراحی سیزن پس، مراحل Regetta، تست آمیرزا، دیزاین نعمت موتوری</li>
+            <li>Task Management، نگهداری پروژه</li>
           </ul>
         </li>
-        <li><strong>پروژه‌های شخصی</strong>:
+        <li>پروژه شخصی: طراحی بازی Lamplighter</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container" id="content-en" style="display: none;" dir="ltr">
+    <h1>Mohammad Abbasi</h1>
+    <p class="subtitle">Game Designer</p>
+    <p>
+      A game designer focused on crafting unique interactive experiences. Experienced in freelancing and collaborating with creative teams on both commercial and personal projects. Passionate about continuous learning, teamwork, and delivering creative solutions in game development and interactive media.
+    </p>
+
+    <div class="section">
+      <h3>Education:</h3>
+      <ul>
+        <li>Diploma - 2021: Shahid Hayeri Technical School, Borujen (Computer Networks)</li>
+        <li>Associate - 2024: Shahid Mohajer Technical College, Isfahan (Software Engineering)</li>
+        <li>Bachelor - In Progress: Enghelab Technical College, Tehran (Digital Animation)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Experience:</h3>
+      <ul>
+        <li>Nardeban Andisheh (Sharif Abad Game):
           <ul>
-            <li>دیزاین بازی Lamplighter</li>
+            <li>Season pass design, Regetta level design, Amirza mini-game testing, Nemat Motor mini-game design</li>
+            <li>Task management, maintenance</li>
           </ul>
         </li>
+        <li>Personal Project: Lamplighter Game Design</li>
       </ul>
-    </section>
-  </main>
+    </div>
+  </div>
+
+  <script>
+    let isFarsi = true;
+    function toggleLanguage() {
+      isFarsi = !isFarsi;
+      document.getElementById('content-fa').style.display = isFarsi ? 'block' : 'none';
+      document.getElementById('content-en').style.display = isFarsi ? 'none' : 'block';
+    }
+  </script>
 </body>
 </html>
