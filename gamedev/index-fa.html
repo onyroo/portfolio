@@ -4,68 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>محمد عباسی | گیم دیزاینر</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Vazirmatn', sans-serif;
-      background-color: #1e1e1e;
-      color: #e0e0e0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      justify-content: center;
-    }
-
-    .container {
-      max-width: 700px;
-      padding: 2rem;
-      background-color: #2a2a2a;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
-
-    h1 {
-      color: #8e44ad;
-      margin-bottom: 0.5rem;
-    }
-
-    .subtitle {
-      color: #3498db;
-      margin-bottom: 1rem;
-    }
-
-    .section {
-      margin-top: 1.5rem;
-    }
-
-    .lang-switch {
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    button {
-      background-color: #8e44ad;
-      color: white;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #732d91;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="lang-switch">
-    <button onclick="toggleLanguage()">تغییر زبان / Switch Language</button>
+    <button onclick="switchTo('en')">English Version</button>
   </div>
 
-  <div class="container" id="content-fa">
+  <div class="container">
     <h1>محمد عباسی</h1>
     <p class="subtitle">گیم دیزاینر</p>
     <p>
@@ -97,43 +43,6 @@
     </div>
   </div>
 
-  <div class="container" id="content-en" style="display: none;" dir="ltr">
-    <h1>Mohammad Abbasi</h1>
-    <p class="subtitle">Game Designer</p>
-    <p>
-      A game designer focused on crafting unique interactive experiences. Experienced in freelancing and collaborating with creative teams on both commercial and personal projects. Passionate about continuous learning, teamwork, and delivering creative solutions in game development and interactive media.
-    </p>
-
-    <div class="section">
-      <h3>Education:</h3>
-      <ul>
-        <li>Diploma - 2021: Shahid Hayeri Technical School, Borujen (Computer Networks)</li>
-        <li>Associate - 2024: Shahid Mohajer Technical College, Isfahan (Software Engineering)</li>
-        <li>Bachelor - In Progress: Enghelab Technical College, Tehran (Digital Animation)</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h3>Experience:</h3>
-      <ul>
-        <li>Nardeban Andisheh (Sharif Abad Game):
-          <ul>
-            <li>Season pass design, Regetta level design, Amirza mini-game testing, Nemat Motor mini-game design</li>
-            <li>Task management, maintenance</li>
-          </ul>
-        </li>
-        <li>Personal Project: Lamplighter Game Design</li>
-      </ul>
-    </div>
-  </div>
-
-  <script>
-    let isFarsi = true;
-    function toggleLanguage() {
-      isFarsi = !isFarsi;
-      document.getElementById('content-fa').style.display = isFarsi ? 'block' : 'none';
-      document.getElementById('content-en').style.display = isFarsi ? 'none' : 'block';
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
