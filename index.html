@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8">
-  <title>Onyro | محمد عباسی</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/vazirmatn@33.003.0/dist/font-face.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onyro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet" />
   <style>
-    * {
+    body {
       margin: 0;
-      padding: 0;
-      font-family: Vazirmatn, sans-serif;
-      box-sizing: border-box;
-    }
-
-    body, html {
-      height: 100%;
-      background-color: #1c1c1c;
-      color: white;
-      direction: rtl;
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
     }
 
     .container {
       display: flex;
-      height: 100vh;
-      width: 100vw;
-      position: relative;
+      justify-content: space-around;
+      align-items: center;
+      width: 90%;
+      max-width: 1200px;
+      height: 80vh;
     }
 
     .half {
@@ -32,88 +32,92 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    .half button {
+      background-color: #6d28d9;
+      color: white;
+      border: none;
+      padding: 20px 40px;
+      font-size: 24px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: background-color 0.3s;
     }
 
-    .half:hover {
-      filter: brightness(1.2);
+    .half button:hover {
+      background-color: #7c3aed;
     }
 
-    .left {
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      font-size: 36px;
-      foreground-color: #888888;
-    }
-
-    .right {
-      background: linear-gradient(135deg, #9333ea, #a855f7);
-      font-size: 36px;
-      foreground-color: #888888;
-    }
-
-    .center-profile {
+    .profile {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -60%);
-      z-index: 10;
+      top: 5%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
     }
 
-    .profile-pic {
-      background-color: #2c2c2c;
-      border: 4px solid #444;
+    .circle-image {
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
-      width: 180px;
-      height: 180px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.6);
-      overflow: hidden;
+      background-color: #333;
+      background-image: url('profile.jpg'); /* عکس خودتو جایگزین کن */
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 20px;
     }
 
-    .profile-pic img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    .intro-box {
-      margin-top: 20px;
+    .bio-box {
       background-color: #2c2c2c;
+      border-radius: 20px;
       padding: 20px;
-      border-radius: 16px;
-      max-width: 400px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-      color: #ccc;
-      font-size: 15px;
+      max-width: 480px;
+      text-align: center;
+      font-size: 16px;
       line-height: 1.8;
+    }
+
+    .social-links {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-links a svg {
+      width: 28px;
+      height: 28px;
+      fill: #f0f0f0;
+      transition: fill 0.3s;
+    }
+
+    .social-links a:hover svg {
+      fill: #a855f7;
     }
   </style>
 </head>
 <body>
-
-<div class="container">
-  <div class="half left" onclick="location.href='/gamedev'">
-    🎮 Game Design
-  </div>
-  <div class="half right" onclick="location.href='/music'">
-    🎵 Music
-  </div>
-
-  <div class="center-profile">
-    <div class="profile-pic">
-      <img src="./pfp.jpg" alt="Mohammad Abbasi">
-    </div>
-    <div class="intro-box">
-      محمد عباسی، طراح بازی و موزیسین<br>
-      تمرکز بر تجربه‌های تعاملی، همکاری تیمی و یادگیری مداوم.
+  <div class="profile">
+    <div class="circle-image"></div>
+    <div class="bio-box">
+      محمد عباسی، طراح بازی و موزیسین. عاشق تجربه‌های تعاملی و خلاق. ترکیبی از گیم دیزاین و موسیقی برای خلق دنیاهای خاص.
+      <div class="social-links">
+        <a href="https://instagram.com/_onyro" target="_blank"><svg><use href="#instagram-icon" /></svg></a>
+        <a href="https://twitter.com/yourusername" target="_blank"><svg><use href="#twitter-icon" /></svg></a>
+        <a href="https://linkedin.com/in/onyroo" target="_blank"><svg><use href="#linkedin-icon" /></svg></a>
+      </div>
     </div>
   </div>
-</div>
 
-</body>
-</html>
+  <div class="container">
+    <div class="half"><a href="/gamedev"><button>Game Design</button></a></div>
+    <div class="half"><a href="/music"><button>Music</button></a></div>
+  </div>
+
+  <svg style="display: none;">
+    <symbol id="instagram-icon" viewBox="0 0 24 24">
+      <path d="M7.5 2h9A5.5 5.5 0 0122 7.5v9a5.5 5.5 0 01-5.5 5.5h-9A5.5 5.5 0 012 16.5v-9A5.5 5.5 0 017.5 2zm0 2A3.5 3.5 0 004 7.5v9A3.5 3.5 0 007.5 20h9a3.5 3.5 0 003.5-3.5v-9A3.5 3.5 0 0016.5 4h-9zm4.5 3a5.5 5.5 0 110 11 5.5 5.5 0 010-11zm0 2a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm4.25-.75a1 1 0 110 2 1 1 0 010-2z"/>
+    </symbol>
+    <symbol id="twitter-icon" viewBox="0 0 24 24">
+      <path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3 0 001.88-2.37 8.63 8.63 0 01-2.73 1.04 4.28 4.28 0 00-7.29 3.9A12.14 12.14 0 013 5.1a4.28 4.28 0 001.33 5.71 4.25 4.25 0 01-1.94-.54v.05a4.28 4.28 0 003.43 4.2 4.27 4.27 0 01-1.93.07 4.28 4.28 0 004 2.98A8.6 8.6 0 012 19.54a12.14 12.14 0 006.56 1.92c7.88 0 12.2-6.53 12.2-12.2l-.01-.56A8.67 8.67 0 0024 5
