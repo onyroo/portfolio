@@ -1,7 +1,77 @@
 <!DOCTYPE html>
-<html>
-  <head><title>Music</title></head>
-  <body>
-    <h1>Hello from Music!</h1>
-  </body>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>موسیقی | محمد عباسی</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/vazirmatn@33.003.0/dist/font-face.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Vazirmatn, sans-serif;
+    }
+
+    body {
+      background-color: #1c1c1c;
+      color: #f0f0f0;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #a855f7;
+      margin-bottom: 20px;
+    }
+
+    .music-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .link-item {
+      background: linear-gradient(90deg, #6366f1, #9333ea);
+      padding: 15px 25px;
+      border-radius: 12px;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .link-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .back-btn {
+      margin-top: 40px;
+      color: #aaa;
+      font-size: 14px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>🎵 موسیقی‌های محمد عباسی</h1>
+
+  <div class="music-links">
+    <a class="link-item" href="https://soundcloud.com/onyro" target="_blank">SoundCloud</a>
+    <a class="link-item" href="https://onyro.bandcamp.com" target="_blank">Bandcamp</a>
+    <a class="link-item" href="https://open.spotify.com/artist/onyro" target="_blank">Spotify</a>
+    <a class="link-item" href="https://www.youtube.com/@onyro" target="_blank">YouTube</a>
+    <a class="link-item" href="https://onyro.art/files/demo1.mp3" target="_blank">دانلود دمو ۱</a>
+    <!-- لینک‌های بیشتر رو می‌تونی اینجا اضافه کنی -->
+  </div>
+
+  <div class="back-btn" onclick="window.location.href='/'">بازگشت به صفحه اصلی</div>
+
+</body>
 </html>
