@@ -26,6 +26,9 @@
       top: 0;
       overflow: hidden;
       cursor: pointer;
+      transition-property: height;
+      transition-duration: 0.2s;
+      transition-timing-function: ease-in-out;
     }
     .half::before {
       content: "";
@@ -53,14 +56,11 @@
       font-weight: bold;
       text-align: center;
     }
-    .half:hover{
+    .half:hover {
       height: 75%;
-      transition-property: height;
-      transition-duration: 0.2s;
-      transition-timing-function: ease-in-out;
     }
     .half .overlay:hover{
-      opacity: 1;
+      opacity: 0.75;
     }
     .game {
       left: 0;
