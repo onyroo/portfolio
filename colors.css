@@ -1,8 +1,8 @@
 :root {
-  --color-orange: #EB9665;
-  --color-teal: #71A6A6;
-  --color-cyan: #65BEBB;
-  --color-taupe: #967F72;
-  --color-charcoal: #3A4242;
-  --color-brown: #3D322B;
+  --firstcolor-primary: #EB9665;
+  --secondcolor-secondary: #71A6A6;
+  --secondcolor-primary: #65BEBB;
+  --firstcolor-secondary: #967F72;
+  --secondcolor-background: #3A4242;
+  --firstcolor-background: #3D322B;
 }
