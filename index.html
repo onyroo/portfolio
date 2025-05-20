@@ -44,9 +44,9 @@
       position: absolute;
       inset: 0;
       z-index: 1;
-      transition-property: opacity;
-      transition-duration: 0.2s;
-      transition-timing-function: ease-in-out;
+      opacity: 0;
+      background-color: transparent;
+      transition: background-color 0.3s ease, opacity 0.3s ease;
     }
     .half .text {
       position: absolute;
@@ -59,12 +59,12 @@
       text-align: center;
     }
     .game:hover .overlay {
-      background: var(--firstcolor-primary);
+      background-color: var(--firstcolor-primary);
       opacity: 0.5;
     }
     
     .music:hover .overlay {
-      background: var(--secondcolor-primary);
+      background-color: var(--secondcolor-primary);
       opacity: 0.5;
     }
 
