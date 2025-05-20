@@ -40,7 +40,7 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(to bottom right, #6a00f4, #0077ff);
-      opacity: 1;
+      opacity: 0.5;
       z-index: 1;
     }
     .half .text {
@@ -53,15 +53,15 @@
       font-weight: bold;
       text-align: center;
     }
-    .half:hover{
-      width: 55%;
-      transition-property: width;
+    .half .text:hover{
+
+    }
+    .half:onclick{
+      height: 55%;
+      transition-property: height;
       transition-duration: 0.5s;
       transition-timing-function: ease-in-out;
     }
-      .half:onclick{
-        
-      }
     .game {
       left: 0;
     }
