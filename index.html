@@ -43,7 +43,6 @@
     .half .overlay {
       position: absolute;
       inset: 0;
-      opacity: 0.5;
       z-index: 1;
       transition-property: opacity;
       transition-duration: 0.2s;
@@ -59,11 +58,13 @@
       font-weight: bold;
       text-align: center;
     }
-    .half .overlay .game{
+    .half .overlay.game:hover{
     background: --firstcolor-primary;
+    opacity: 0.5;
     }
-    .half .overlay .music{
+    .half .overlay.music:hover{
     background: --secondcolor-primary  
+    opacity: 0.5;
     }
     .half:hover {
       height: 75%;
