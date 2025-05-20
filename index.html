@@ -53,13 +53,17 @@
       font-weight: bold;
       text-align: center;
     }
-    .half .text:hover{
-      top: 60%;
+    .half:hover{
+      opacity: 1;
+      width: 55%;
+      transition-property: width;
+      transition-duration: 0.2s;
+      transition-timing-function: ease-in-out;
     }
-    .half:onclick{
+    .half .text:onclick{
       height: 55%;
       transition-property: height;
-      transition-duration: 0.5s;
+      transition-duration: 0.1s;
       transition-timing-function: ease-in-out;
     }
     .game {
