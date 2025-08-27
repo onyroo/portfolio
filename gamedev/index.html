@@ -4,8 +4,134 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GameDesign | ønyro</title>
-  <link rel="stylesheet" href="style.css" />
+  <!-- در صورت نیاز به رنگ‌ها از فایل پروژه، این لینک را نگه‌دار -->
   <link rel="stylesheet" href="../colors.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: var(--secondcolor-background);
+      --card: #2a2a2a;
+      --text: #e0e0e0;
+      --main: var(--secondcolor-primary);
+      --main-dark: var(--secondcolor-secondary);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: var(--bg); /* fallback اگر تصویر لود نشد */
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100dvh;
+      justify-content: center;
+      position: relative;   /* برای لایه‌های پس‌زمینه */
+      overflow: hidden;     /* جلوگیری از اسکرول ناشی از بلور */
+      padding: 0;           /* این صفحه padding سراسری ندارد */
+    }
+
+    /* تصویر پس‌زمینه با بلور */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url("music_bg.jpg") center / cover no-repeat;
+      filter: blur(12px);
+      transform: scale(1.06); /* برای پوشش لبه‌های بلور شده */
+      z-index: -2;
+      will-change: transform, filter;
+    }
+
+    /* لایهٔ رنگ نیمه‌شفاف از رنگ پس‌زمینهٔ فعلی روی تصویر */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      opacity: 0.6; /* میزان تیرگی/شفافیت رنگ روی تصویر */
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 700px;
+      width: calc(100% - 32px);
+      margin: 16px;
+      padding: 2rem;
+      background-color: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      color: var(--main);
+      margin-bottom: 0.5rem;
+      font-size: 1.75rem;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      color: var(--main-dark);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    p {
+      line-height: 1.9;
+      margin-bottom: 0.5rem;
+    }
+
+    .section {
+      margin-top: 1.5rem;
+    }
+
+    .section h3 {
+      margin-bottom: 0.75rem;
+      color: var(--main);
+      font-size: 1.05rem;
+    }
+
+    ul {
+      padding-inline-start: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+    }
+
+    .lang-switch {
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    button {
+      background-color: var(--main);
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: var(--main-dark);
+    }
+
+    @media (min-width: 992px) {
+      .container { padding: 2.5rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -41,6 +167,6 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- اگر اسکریپت خارجی داری، این را نگه‌دار؛ در غیر این صورت می‌توانی حذفش کنی -->
 </body>
 </html>
