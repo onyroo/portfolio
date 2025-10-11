@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GameDesign | ønyro</title>
-  <!-- در صورت نیاز به رنگ‌ها از فایل پروژه، این لینک را نگه‌دار -->
+  <title>Game Design | onyro</title>
   <link rel="stylesheet" href="../colors.css" />
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
 
@@ -29,44 +28,78 @@
 
     body {
       font-family: 'Vazirmatn', sans-serif;
-      background-color: var(--bg); /* fallback اگر تصویر لود نشد */
+      background-color: var(--bg);
       color: var(--text);
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100dvh;
-      justify-content: center;
-      position: relative;   /* برای لایه‌های پس‌زمینه */
-      overflow: hidden;     /* جلوگیری از اسکرول ناشی از بلور */
-      padding: 0;           /* این صفحه padding سراسری ندارد */
+      position: relative;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 0;
     }
 
-    /* تصویر پس‌زمینه با بلور */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       background: url("game_bg.jpg") center / cover no-repeat;
       filter: blur(12px);
-      transform: scale(1.06); /* برای پوشش لبه‌های بلور شده */
+      transform: scale(1.06);
       z-index: -2;
       will-change: transform, filter;
     }
 
-    /* لایهٔ رنگ نیمه‌شفاف از رنگ پس‌زمینهٔ فعلی روی تصویر */
     body::after {
       content: "";
       position: fixed;
       inset: 0;
       background: var(--bg);
-      opacity: 0.6; /* میزان تیرگی/شفافیت رنگ روی تصویر */
+      opacity: 0.6;
       z-index: -1;
     }
 
+    /* Top Bar */
+    header.top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background-color: #1e1e1e;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 16px;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    header.top-bar a, header.top-bar button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      background-color: #2a2a2a;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      padding: 0 8px;
+    }
+    header.top-bar a:hover.home { color: var(--main); }
+    header.top-bar a:hover.music { color: #EB9665; }
+    header.top-bar a:hover.lang-btn { color: var(--main); }
+
     .container {
-      max-width: 700px;
+      max-width: 1000px;
       width: calc(100% - 32px);
-      margin: 16px;
+      margin-top: 80px; /* جای کافی برای top bar */
       padding: 2rem;
       background-color: var(--card);
       border-radius: 12px;
@@ -109,9 +142,61 @@
       margin-bottom: 0.4rem;
     }
 
-    .lang-switch {
-      margin-bottom: 1rem;
-      text-align: center;
+    /* Experiences - Flex version */
+    .experiences {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #1e1e1e;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s, box-shadow 0.3s;
+      width: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+    }
+
+    /* Desktop: 2 cards per row */
+    @media (min-width: 768px) {
+      .card {
+        width: calc(50% - 20px);
+      }
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 1rem;
+    }
+
+    .card-content h4 {
+      color: var(--main);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .card-content ul {
+      padding-left: 1rem;
+    }
+
+    .card-content li {
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
     }
 
     .back-btn {
@@ -121,6 +206,7 @@
       text-decoration: underline;
       cursor: pointer;
     }
+
     button {
       background-color: var(--main);
       color: white;
@@ -141,41 +227,110 @@
   </style>
 </head>
 <body>
+  
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <a href="/" class="home" title="Home">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+      </svg>
 
-  <div class="container">
-    <h1>محمد عباسی</h1>
-    <p class="subtitle">گیم دیزاینر</p>
-    <p>
-      طراح بازی با تمرکز بر خلق تجربه‌های تعاملی منحصربه‌فرد. سابقه‌ی فعالیت به‌صورت
-      فریلنس و همکاری با تیم‌های خلاق در پروژه‌های تجاری و شخصی. مشتاق یادگیری
-      مداوم، همکاری تیمی و ارائه راه‌حل‌های خلاقانه در مسیر توسعه بازی و رسانه‌های تعاملی.
+    </a>
+    <a href="/music" class="music" title="Music">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
+      </svg>
+    </a>
+  </header>
+
+  <div class="container" id="gd-content">
+    <h1>Mohammad (onyro) Abbasi</h1>
+    <p class="subtitle intro-subtitle">Game Designer</p>
+
+    <p class="intro-text">
+      I'm a 21y.o game designer passionate about crafting memorable interactive experiences.
+      I have experience working freelance and collaborating with creative teams on both
+      commercial and personal projects. I love learning new techniques, working closely with teams,
+      and finding creative solutions to design challenges throughout production.
     </p>
 
     <div class="section">
-      <h3>اطلاعات تحصیلی:</h3>
+      <h3>Education</h3>
       <ul>
-        <li>دیپلم - سال 1400: هنرستان فنی شهید حایری، بروجن (شبکه و نرم‌افزار)</li>
-        <li>کاردانی - 1403: دانشکده فنی شهید مهاجر، اصفهان (نرم‌افزار)</li>
-        <li>کارشناسی - در حال تحصیل: دانشکده فنی انقلاب اسلامی، تهران (انیمیشن دیجیتال)</li>
+        <li>Diploma: Shahid Hayri Technical School, Borujen (Networking & Software Engineering)</li>
+        <li>Associate Degree: Shahid Mohajer Technical College, Isfahan (Software Engineering)</li>
+        <li>Bachelor's — In progress: Enghelab-e Eslami Technical College, Tehran (Digital Animation)</li>
       </ul>
     </div>
 
     <div class="section">
-      <h3>سوابق شغلی:</h3>
+      <h3>Professional Experiences</h3>
+      <div class="experiences">
+        <!-- Card 1 -->
+        <div class="card">
+          <img src="gifstudio.jpg" alt="GIF Studio – La be la Game">
+          <div class="card-content">
+            <h4>GIF Studio — La be la Game (Lead Game Designer)</h4>
+            <ul>
+              <li>Was there since the project definition.</li>
+              <li>Designed the core game mechanics.</li>
+              <li>Contributed to designing puzzles.</li>
+              <li>Made the F2P Economy.</li>
+              <li>Designed the whole UX of the game.</li>
+              <li>Animated UI Assets.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+          <img src="brainladder.jpg" alt="Brainladder – Sharifabad Game Team">
+          <div class="card-content">
+            <h4>Brainladder — Sharifabad Game Team (Game Designer)</h4>
+            <ul>
+              <li>Designed season pass systems and level layouts for "Regetta".</li>
+              <li>Contributed to puzzle tuning and design for "Amirza" testing stages.</li>
+              <li>Concept and design work for the "Nemat Motori" mechanic.</li>
+              <li>Task management and general project maintenance.</li>
+              <li>Animated UI Assets of "Sharif Abad".</li>
+              <li>Animated "Amirza" Characters.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <img src="lamplighter.jpg" alt="Personal Project – Lamplighter">
+          <div class="card-content">
+            <h4>Personal Project — Lamplighter</h4>
+            <ul>
+              <li>Lead designer for a compact, atmospheric puzzle-adventure prototype.</li>
+              <li>Focused on player flow, emergent interaction, and simple but deep mechanics.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Skills & Tools</h3>
       <ul>
-        <li>نردبان اندیشه - بازی شریف‌آباد:
-          <ul>
-            <li>طراحی سیزن پس، مراحل Regetta، تست آمیرزا، دیزاین نعمت موتوری</li>
-            <li>Task Management، نگهداری پروژه</li>
-          </ul>
-        </li>
-        <li>پروژه شخصی: طراحی بازی Lamplighter</li>
+        <li>Game systems design, level & progression design</li>
+        <li>Prototyping (paper & digital), playtesting and iteration</li>
+        <li>Task management, teamwork, and cross-discipline communication</li>
+        <li>Familiar with Unity workflow</li>
+        <li>Adobe apps</li>
       </ul>
     </div>
+
+    <div class="section">
+      <h3>What I bring to a team</h3>
+      <p>
+        I aim to make games that feel intentional — mechanics that reward player curiosity,
+        clear feedback, and levels that invite experimentation. I enjoy working closely with
+        artists and programmers to turn ideas into playful, polished experiences.
+      </p>
+    </div>
   </div>
-
-  <div class="back-btn" onclick="window.location.href='/'">بازگشت به صفحه اصلی</div>
-
-  <!-- اگر اسکریپت خارجی داری، این را نگه‌دار؛ در غیر این صورت می‌توانی حذفش کنی -->
 </body>
 </html>
