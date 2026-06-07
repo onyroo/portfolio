@@ -1,2 +1,2 @@
 My website portfolio at:
-www.onyro.art
+www.onyro.info
