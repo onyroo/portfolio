@@ -38,6 +38,7 @@
       overflow-y: auto;
       overflow-x: hidden;
       padding: 0;
+      transition: all 0.4s ease;
     }
 
     body::before {
@@ -48,7 +49,6 @@
       filter: blur(12px);
       transform: scale(1.06);
       z-index: -2;
-      will-change: transform, filter;
     }
 
     body::after {
@@ -60,14 +60,14 @@
       z-index: -1;
     }
 
-    /* Top Bar */
+    /* Top Bar - Always LTR */
     header.top-bar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 60px;
-      background-color: rgba(30,30,30,0.85); /* نیمه شفاف مشابه لایه پس زمینه */
+      background-color: rgba(30,30,30,0.85);
       backdrop-filter: blur(8px);
       display: flex;
       align-items: center;
@@ -75,6 +75,8 @@
       padding: 0 16px;
       z-index: 10;
       box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      direction: ltr;           /* Force LTR for top bar */
+      justify-content: flex-start;
     }
 
     header.top-bar a, header.top-bar button {
@@ -93,16 +95,13 @@
       font-size: 14px;
       padding: 0 8px;
     }
-    header.top-bar a:hover.home { color: var(--main); }
-    header.top-bar a:hover.music { color: #EB9665; }
-    header.top-bar a:hover.lang-btn { color: var(--main); }
 
     .container {
       max-width: 1000px;
       width: calc(100% - 32px);
-      margin-top: 80px; /* جای کافی برای top bar */
+      margin-top: 80px;
       padding: 2rem;
-      background-color: rgba(30,30,30,0.85); /* نیمه شفاف مشابه لایه پس زمینه */
+      background-color: rgba(30,30,30,0.85);
       border-radius: 16px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
       backdrop-filter: blur(8px);
@@ -144,7 +143,6 @@
       margin-bottom: 0.4rem;
     }
 
-    /* Experiences - Flex version */
     .experiences {
       display: flex;
       flex-wrap: wrap;
@@ -168,7 +166,6 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.6);
     }
 
-    /* Desktop: 2 cards per row */
     @media (min-width: 768px) {
       .card {
         width: calc(50% - 20px);
@@ -192,23 +189,6 @@
       font-size: 1.1rem;
     }
 
-    .card-content ul {
-      padding-left: 1rem;
-    }
-
-    .card-content li {
-      font-size: 0.9rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .back-btn {
-      margin-top: 40px;
-      color: #ccc;
-      font-size: 14px;
-      text-decoration: underline;
-      cursor: pointer;
-    }
-
     button {
       background-color: var(--main);
       color: white;
@@ -223,6 +203,20 @@
       background-color: var(--main-dark);
     }
 
+    /* RTL Support for main content only */
+    body[dir="rtl"] .container,
+    body[dir="rtl"] .section,
+    body[dir="rtl"] p,
+    body[dir="rtl"] ul,
+    body[dir="rtl"] .card-content {
+      text-align: right;
+      direction: rtl;
+    }
+
+    body[dir="rtl"] ul {
+      padding-inline-start: 1.5rem;
+    }
+
     @media (min-width: 992px) {
       .container { padding: 2.5rem; }
     }
@@ -233,23 +227,23 @@
   <!-- Top Bar -->
   <header class="top-bar">
     <a href="/" class="home" title="Home">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="size-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
       </svg>
-
     </a>
     <a href="/music" class="music" title="Music">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="size-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
       </svg>
     </a>
+    <button id="lang-toggle" class="lang-btn" title="Switch Language">🇮🇷 FA</button>
   </header>
 
   <div class="container" id="gd-content">
-    <h1>Mohammad (onyro) Abbasi</h1>
-    <p class="subtitle intro-subtitle">Game Designer</p>
+    <h1 data-key="name">Mohammad (onyro) Abbasi</h1>
+    <p class="subtitle" data-key="subtitle">Game Designer</p>
 
-    <p class="intro-text">
+    <p class="intro-text" data-key="intro">
       I'm a young game designer passionate about crafting memorable interactive experiences.
       I have experience working freelance and collaborating with creative teams on both
       commercial and personal projects. I love learning new techniques, working closely with teams,
@@ -257,69 +251,66 @@
     </p>
 
     <div class="section">
-      <h3>Education</h3>
-      <ul>
-        <li>Diploma: Shahid Hayri Technical School, Borujen (Networking & Software Engineering)</li>
-        <li>Associate Degree: Shahid Mohajer Technical College, Isfahan (Software Engineering)</li>
-        <li>Bachelor's — In progress: Enghelab-e Eslami Technical College, Tehran (Digital Animation)</li>
+      <h3 data-key="education">Education</h3>
+      <ul id="education-list">
+        <li data-key="edu1">Diploma: Shahid Hayri Technical School, Borujen (Networking & Software Engineering)</li>
+        <li data-key="edu2">Associate Degree: Shahid Mohajer Technical College, Isfahan (Software Engineering)</li>
+        <li data-key="edu3">Bachelor's — In progress: Enghelab-e Eslami Technical College, Tehran (Digital Animation)</li>
       </ul>
     </div>
 
     <div class="section">
-      <h3>Professional Experiences</h3>
+      <h3 data-key="experiences">Professional Experiences</h3>
       <div class="experiences">
-        <!-- Card 1 -->
+
         <div class="card">
           <img src="gifstudio.jpg" alt="GIF Studio – La be la Game">
           <div class="card-content">
-            <h4>GIF Studio — La be la Game (Lead Game Designer)</h4>
+            <h4 data-key="exp1_title">GIF Studio — La be la Game (Lead Game Designer)</h4>
             <ul>
-              <li>Was there since the project definition.</li>
-              <li>Designed the core game mechanics.</li>
-              <li>Contributed to designing puzzles.</li>
-              <li>Made the F2P Economy.</li>
-              <li>Designed the whole UX of the game.</li>
-              <li>Animated UI Assets.</li>
+              <li data-key="exp1_1">Was there since the project definition.</li>
+              <li data-key="exp1_2">Designed the core game mechanics.</li>
+              <li data-key="exp1_3">Contributed to designing puzzles.</li>
+              <li data-key="exp1_4">Made the F2P Economy.</li>
+              <li data-key="exp1_5">Designed the whole UX of the game.</li>
+              <li data-key="exp1_6">Animated UI Assets.</li>
             </ul>
           </div>
         </div>
 
-        <!-- Card 2 -->
         <div class="card">
           <img src="brainladder.jpg" alt="Brainladder – Sharifabad Game Team">
           <div class="card-content">
-            <h4>Brainladder — Sharifabad Game Team (Game Designer)</h4>
+            <h4 data-key="exp2_title">Brainladder — Sharifabad Game Team (Game Designer)</h4>
             <ul>
-              <li>Designed season pass systems and level layouts for "Regetta".</li>
-              <li>Contributed to puzzle tuning and design for "Amirza" testing stages.</li>
-              <li>Concept and design work for the "Nemat Motori" mechanic.</li>
-              <li>Task management and general project maintenance.</li>
-              <li>Animated UI Assets of "Sharif Abad".</li>
-              <li>Animated "Amirza" Characters.</li>
+              <li data-key="exp2_1">Designed season pass systems and level layouts for "Regetta".</li>
+              <li data-key="exp2_2">Contributed to puzzle tuning and design for "Amirza" testing stages.</li>
+              <li data-key="exp2_3">Concept and design work for the "Nemat Motori" mechanic.</li>
+              <li data-key="exp2_4">Task management and general project maintenance.</li>
+              <li data-key="exp2_5">Animated UI Assets of "Sharif Abad".</li>
+              <li data-key="exp2_6">Animated "Amirza" Characters.</li>
             </ul>
           </div>
         </div>
 
-        <!-- Card 3 -->
         <div class="card">
           <img src="BlackCubeGames.jpg" alt="Black Cube Games – Realm Of Fame">
           <div class="card-content">
-            <h4>Black Cube Games — Game Designer & Game Audio Specialist</h4>
+            <h4 data-key="exp3_title">Black Cube Games — Game Designer & Game Audio Specialist</h4>
             <ul>
-              <li>Im currently working at Black Cube Games, im proud to be a part of Designer team.</li>
-              <li>Im also working with the Game Audio team, creating interactive music and sound effects</li>
+              <li data-key="exp3_1">Currently working at Black Cube Games as part of the design team.</li>
+              <li data-key="exp3_2">Also working with the Game Audio team, creating interactive music and sound effects.</li>
             </ul>
           </div>
         </div>
 
-        <!-- Card 4 -->
         <div class="card">
           <img src="personal.jpg" alt="Personal Project – Lamplighter">
           <div class="card-content">
-            <h4>Personal Project — Lamplighter</h4>
+            <h4 data-key="exp4_title">Personal Project — Lamplighter</h4>
             <ul>
-              <li>Lead designer for a compact, atmospheric puzzle-adventure prototype.</li>
-              <li>Focused on player flow, emergent interaction, and simple but deep mechanics.</li>
+              <li data-key="exp4_1">Lead designer for a compact, atmospheric puzzle-adventure prototype.</li>
+              <li data-key="exp4_2">Focused on player flow, emergent interaction, and simple but deep mechanics.</li>
             </ul>
           </div>
         </div>
@@ -327,24 +318,143 @@
     </div>
 
     <div class="section">
-      <h3>Skills & Tools</h3>
-      <ul>
-        <li>Game systems design, level & progression design</li>
-        <li>Prototyping (paper & digital), playtesting and iteration</li>
-        <li>Task management, teamwork, and cross-discipline communication</li>
-        <li>Familiar with Unity workflow</li>
-        <li>Adobe apps</li>
+      <h3 data-key="skills">Skills & Tools</h3>
+      <ul id="skills-list">
+        <li data-key="skill1">Game systems design, level & progression design</li>
+        <li data-key="skill2">Prototyping (paper & digital), playtesting and iteration</li>
+        <li data-key="skill3">Task management, teamwork, and cross-discipline communication</li>
+        <li data-key="skill4">Familiar with Unity workflow</li>
+        <li data-key="skill5">Adobe apps</li>
       </ul>
     </div>
 
     <div class="section">
-      <h3>What I bring to a team</h3>
-      <p>
+      <h3 data-key="bring">What I bring to a team</h3>
+      <p class="bring-text" data-key="bring_text">
         I aim to make games that feel intentional — mechanics that reward player curiosity,
         clear feedback, and levels that invite experimentation. I enjoy working closely with
         artists and programmers to turn ideas into playful, polished experiences.
       </p>
     </div>
   </div>
+
+  <script>
+    const langToggle = document.getElementById('lang-toggle');
+    let isPersian = false;
+
+    const translations = {
+      en: {
+        name: "Mohammad (onyro) Abbasi",
+        subtitle: "Game Designer",
+        intro: "I'm a young game designer passionate about crafting memorable interactive experiences. I have experience working freelance and collaborating with creative teams on both commercial and personal projects. I love learning new techniques, working closely with teams, and finding creative solutions to design challenges throughout production.",
+        
+        education: "Education",
+        edu1: "Diploma: Shahid Hayri Technical School, Borujen (Networking & Software Engineering)",
+        edu2: "Associate Degree: Shahid Mohajer Technical College, Isfahan (Software Engineering)",
+        edu3: "Bachelor's — In progress: Enghelab-e Eslami Technical College, Tehran (Digital Animation)",
+        
+        experiences: "Professional Experiences",
+        exp1_title: "GIF Studio — La be la Game (Lead Game Designer)",
+        exp1_1: "Was there since the project definition.",
+        exp1_2: "Designed the core game mechanics.",
+        exp1_3: "Contributed to designing puzzles.",
+        exp1_4: "Made the F2P Economy.",
+        exp1_5: "Designed the whole UX of the game.",
+        exp1_6: "Animated UI Assets.",
+        
+        exp2_title: "Brainladder — Sharifabad Game Team (Game Designer)",
+        exp2_1: "Designed season pass systems and level layouts for \"Regetta\".",
+        exp2_2: "Contributed to puzzle tuning and design for \"Amirza\" testing stages.",
+        exp2_3: "Concept and design work for the \"Nemat Motori\" mechanic.",
+        exp2_4: "Task management and general project maintenance.",
+        exp2_5: "Animated UI Assets of \"Sharif Abad\".",
+        exp2_6: "Animated \"Amirza\" Characters.",
+        
+        exp3_title: "Black Cube Games — Game Designer & Game Audio Specialist",
+        exp3_1: "Currently working at Black Cube Games as part of the design team.",
+        exp3_2: "Also working with the Game Audio team, creating interactive music and sound effects.",
+        
+        exp4_title: "Personal Project — Lamplighter",
+        exp4_1: "Lead designer for a compact, atmospheric puzzle-adventure prototype.",
+        exp4_2: "Focused on player flow, emergent interaction, and simple but deep mechanics.",
+        
+        skills: "Skills & Tools",
+        skill1: "Game systems design, level & progression design",
+        skill2: "Prototyping (paper & digital), playtesting and iteration",
+        skill3: "Task management, teamwork, and cross-discipline communication",
+        skill4: "Familiar with Unity workflow",
+        skill5: "Adobe apps",
+        
+        bring: "What I bring to a team",
+        bring_text: "I aim to make games that feel intentional — mechanics that reward player curiosity, clear feedback, and levels that invite experimentation. I enjoy working closely with artists and programmers to turn ideas into playful, polished experiences."
+      },
+      fa: {
+        name: "محمد (onyro) عباسی",
+        subtitle: "طراح بازی",
+        intro: "من یک طراح بازی جوان هستم که علاقه زیادی به ساخت تجربیات تعاملی به‌یادماندنی دارم. تجربه کار فریلنس و همکاری با تیم‌های خلاق در پروژه‌های تجاری و شخصی دارم. عاشق یادگیری تکنیک‌های جدید، کار نزدیک با تیم‌ها و پیدا کردن راه‌حل‌های خلاقانه برای چالش‌های طراحی در طول تولید هستم.",
+        
+        education: "تحصیلات",
+        edu1: "دیپلم: دبیرستان فنی شهید حائری، بروجن (شبکه و مهندسی نرم‌افزار)",
+        edu2: "کاردانی: دانشکده فنی شهید مهاجر، اصفهان (مهندسی نرم‌افزار)",
+        edu3: "کارشناسی — در حال تحصیل: دانشکده فنی انقلاب اسلامی، تهران (انیمیشن دیجیتال)",
+        
+        experiences: "تجربیات حرفه‌ای",
+        exp1_title: "GIF Studio — La be la Game (طراح بازی ارشد)",
+        exp1_1: "از ابتدا و تعریف پروژه حضور داشتم.",
+        exp1_2: "طراحی مکانیک‌های اصلی بازی.",
+        exp1_3: "مشارکت در طراحی پازل‌ها.",
+        exp1_4: "طراحی اقتصاد F2P.",
+        exp1_5: "طراحی کامل UX بازی.",
+        exp1_6: "انیمیشن المان‌های UI.",
+        
+        exp2_title: "Brainladder — تیم بازی شریف‌آباد (طراح بازی)",
+        exp2_1: "طراحی سیستم‌های سیزن پس و چیدمان سطوح برای «Regetta».",
+        exp2_2: "مشارکت در تنظیم و طراحی پازل‌های مراحل تست «Amirza».",
+        exp2_3: "کار مفهومی و طراحی مکانیک «Nemat Motori».",
+        exp2_4: "مدیریت تسک و نگهداری کلی پروژه.",
+        exp2_5: "انیمیشن المان‌های UI شریف‌آباد.",
+        exp2_6: "انیمیشن کاراکترهای «Amirza».",
+        
+        exp3_title: "Black Cube Games — طراح بازی و متخصص صدا",
+        exp3_1: "در حال حاضر در Black Cube Games به عنوان عضو تیم طراحی مشغول به کار هستم.",
+        exp3_2: "همچنین با تیم صدا همکاری می‌کنم و موسیقی تعاملی و افکت‌های صوتی می‌سازم.",
+        
+        exp4_title: "پروژه شخصی — Lamplighter",
+        exp4_1: "طراح ارشد برای پروتوتایپ پازل-ماجراجویی فشرده و اتمسفریک.",
+        exp4_2: "تمرکز بر جریان بازیکن، تعاملات نوظهور و مکانیک‌های ساده اما عمیق.",
+        
+        skills: "مهارت‌ها و ابزارها",
+        skill1: "طراحی سیستم‌های بازی، طراحی سطح و پیشرفت بازیکن",
+        skill2: "پروتوتایپ‌سازی (کاغذی و دیجیتال)، تست بازی و تکرار",
+        skill3: "مدیریت تسک، کار تیمی و ارتباط بین رشته‌ای",
+        skill4: "آشنایی با workflow یونیتی",
+        skill5: "ابزارهای ادوبی",
+        
+        bring: "آنچه به تیم می‌آورم",
+        bring_text: "هدفم ساخت بازی‌هایی است که حس هدفمند بودن داشته باشند — مکانیک‌هایی که کنجکاوی بازیکن را پاداش دهند، بازخورد واضح، و سطوحی که به آزمایش دعوت کنند. از کار نزدیک با هنرمندان و برنامه‌نویسان برای تبدیل ایده‌ها به تجربیات بازیگوش و صیقل‌خورده لذت می‌برم."
+      }
+    };
+
+    function switchLanguage() {
+      isPersian = !isPersian;
+      const lang = isPersian ? 'fa' : 'en';
+
+      document.documentElement.lang = lang;
+      document.documentElement.dir = isPersian ? 'rtl' : 'ltr';
+      
+      // Update language button with flags
+      langToggle.textContent = isPersian ? '🇬🇧 EN' : '🇮🇷 FA';
+
+      // Update all translatable elements
+      document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key').replace(/-/g, '_');
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+    }
+
+    langToggle.addEventListener('click', switchLanguage);
+  </script>
 </body>
 </html>
